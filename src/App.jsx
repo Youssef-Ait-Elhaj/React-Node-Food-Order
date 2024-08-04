@@ -4,24 +4,42 @@ import Modal from "./components/Modal.jsx";
 import {useState} from "react";
 import Cart from "./components/Cart.jsx";
 import CartContextProvider, {CartContext} from "./store/shopping-cart-context.jsx";
+import Checkout from "./components/Checkout.jsx";
 
 function App() {
-    const [modalIsOpen, setModalIsOpen] = useState(false);
+    const [cartModalIsOpen, setCartModalIsOpen] = useState(false);
+    const [checkoutModalIsOpen, setCheckoutModalIsOpen] = useState(false);
 
-    function handleModalOpen() {
-        setModalIsOpen(true);
+    function handleCartModalOpen() {
+        setCartModalIsOpen(true);
     }
 
-    function handleModalClose() {
-        setModalIsOpen(false);
+    function handleCartModalClose() {
+        setCartModalIsOpen(false);
+    }
+
+    function handleCheckoutModalOpen() {
+        setCheckoutModalIsOpen(true);
+    }
+
+    function handleCheckoutModalClose() {
+        setCheckoutModalIsOpen(false);
+    }
+
+    function handleGoToCheckout() {
+        setCartModalIsOpen(false);
+        setCheckoutModalIsOpen(true);
     }
 
     return (
         <CartContextProvider>
-            <Header handleModalOpen={handleModalOpen}/>
+            <Header handleModalOpen={handleCartModalOpen}/>
             <Products />
-            <Modal open={modalIsOpen}>
-                <Cart handleModalClose={handleModalClose} />
+            <Modal open={cartModalIsOpen}>
+                <Cart handleModalClose={handleCartModalClose} handleGoToCheckout={handleGoToCheckout} />
+            </Modal>
+            <Modal open={checkoutModalIsOpen}>
+                <Checkout handleModalClose={handleCheckoutModalClose} />
             </Modal>
         </CartContextProvider>
     );

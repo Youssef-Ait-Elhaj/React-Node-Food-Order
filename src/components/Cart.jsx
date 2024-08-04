@@ -2,8 +2,9 @@ import {useContext} from "react";
 import {CartContext} from "../store/shopping-cart-context.jsx";
 import {format} from "../utils/format.js";
 
-export default function Cart({ handleModalClose }) {
+export default function Cart({ handleModalClose, handleGoToCheckout }) {
     const {items, getCartTotal, addItemToCart, updateItemQuantity} = useContext(CartContext);
+
 
     return (
         <div className="cart">
@@ -28,7 +29,7 @@ export default function Cart({ handleModalClose }) {
                 </p>
                 <div className="modal-actions">
                     <button className="text-button" onClick={handleModalClose}>Close</button>
-                    <button className="button">Go to Checkout</button>
+                    <button className="button" onClick={handleGoToCheckout}>Go to Checkout</button>
                 </div>
             </ul>
         </div>
