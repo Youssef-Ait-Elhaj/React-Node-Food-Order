@@ -5,7 +5,6 @@ import {format} from "../utils/format.js";
 export default function Cart({ handleModalClose, handleGoToCheckout }) {
     const {items, getCartTotal, addItemToCart, updateItemQuantity} = useContext(CartContext);
 
-
     return (
         <div className="cart">
             <h2>Your Cart</h2>
