@@ -17,7 +17,7 @@ export default function Checkout({ handleModalClose }) {
 
         try {
             const response = await submitOrder(orderData);
-            // show sucess
+            // show success
             setOrderSuccess(true);
         } catch (error) {
             setError({
