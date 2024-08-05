@@ -5,7 +5,7 @@ import {submitOrder} from "../http.js";
 import Error from "./Error.jsx";
 
 export default function Checkout({ handleModalClose }) {
-    const {items, getCartTotal} = useContext(CartContext);
+    const {items, getCartTotal, clearCart} = useContext(CartContext);
     const [error, setError] = useState();
     const [orderSuccess, setOrderSuccess] = useState(false);
 
@@ -19,12 +19,14 @@ export default function Checkout({ handleModalClose }) {
             const response = await submitOrder(orderData);
             // show success
             setOrderSuccess(true);
+            clearCart();
         } catch (error) {
             setError({
                 message: error.message || 'Failed to submit order, Please try again later.',
             });
         }
     }
+
 
     if (error) {
         return <Error title="Failed to submit order" message={error.message} />;

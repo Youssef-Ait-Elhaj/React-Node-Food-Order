@@ -55,6 +55,13 @@ function shoppingCartReducer(state, action) {
         };
     }
 
+    if (action.type === "CLEAR_CART") {
+        return {
+            ...state,
+            items: []
+        }
+    }
+
     return state;
 }
 
@@ -137,7 +144,13 @@ export default function CartContextProvider({children}) {
         });
     }
 
-    const ctxValue = {items: shoppingCartState.items, getCartTotal, addItemToCart, updateItemQuantity};
+    function clearCart() {
+        shoppingCartDispatch({
+            type: "CLEAR_CART",
+        });
+    }
+
+    const ctxValue = {items: shoppingCartState.items, getCartTotal, addItemToCart, updateItemQuantity, clearCart};
 
     return (
         <CartContext.Provider value={ctxValue}>
