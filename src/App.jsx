@@ -3,7 +3,7 @@ import Products from "./components/Products.jsx";
 import Modal from "./components/Modal.jsx";
 import {useState} from "react";
 import Cart from "./components/Cart.jsx";
-import CartContextProvider, {CartContext} from "./store/shopping-cart-context.jsx";
+import CartContextProvider, {CartContext} from "./store/CartContext.jsx";
 import Checkout from "./components/Checkout.jsx";
 
 function App() {

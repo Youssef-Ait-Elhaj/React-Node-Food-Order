@@ -1,5 +1,5 @@
 import {useContext, useState} from "react";
-import {CartContext} from "../store/shopping-cart-context.jsx";
+import {CartContext} from "../store/CartContext.jsx";
 import {format} from "../utils/format.js";
 
 export default function Cart({ handleModalClose, handleGoToCheckout }) {

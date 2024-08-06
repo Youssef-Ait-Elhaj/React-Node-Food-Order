@@ -1,5 +1,5 @@
 import {useContext, useState} from "react";
-import {CartContext} from "../store/shopping-cart-context.jsx";
+import {CartContext} from "../store/CartContext.jsx";
 import {format} from "../utils/format.js";
 import {submitOrder} from "../http.js";
 import Error from "./Error.jsx";
